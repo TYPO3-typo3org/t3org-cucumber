@@ -1,0 +1,7 @@
+Feature: The stage has four elements which keep rotating
+
+  @long
+  Scenario: Visit typo3.org and check the stage items
+    Given I am on home
+    When I click on the fourth stage item
+    Then I should see the first item going active

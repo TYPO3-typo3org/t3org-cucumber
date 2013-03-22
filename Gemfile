@@ -2,6 +2,10 @@ source :rubygems
 gem 'cucumber'
 gem 'rspec'
 gem 'capybara'
-gem 'capybara-webkit', "< 0.13.0"
+gem 'capybara-webkit'
 gem 'capybara-screenshot'
-gem "headless"
+gem 'headless'
+gem 'guard'
+gem 'guard-shell'
+gem 'rb-inotify'
+gem 'rb-readline'

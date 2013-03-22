@@ -17,15 +17,11 @@ Then /^I should see user profiles$/ do
 end
 
 Then /^forge activity messages$/ do
-	wait_until(20) do
-		assert page.all(:xpath, "//*[@id='forge-ticker']/*//li[@class='slide']").length >= 5
-	end
+  assert page.all(:xpath, "//*[@id='forge-ticker']/*//li[@class='slide']").length >= 5
 end
 
 Then /^I should see the first item going active$/ do
-	wait_until(20) do
-		page.should have_xpath("//*[@id='top-slider']//ul[@class='slider-nav']/li[1][@class='active']")
-	end
+  page.should have_xpath("//*[@id='top-slider']//ul[@class='slider-nav']/li[1][@class='active']")
 end
 
 Then /^I should see (\d+) active sponsor banners$/ do |amount|

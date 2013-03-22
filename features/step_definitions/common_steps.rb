@@ -15,7 +15,5 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
 end
 
 Then /^I should see them changing$/ do
-	wait_until(10) do
-		page.should have_xpath(@path.gsub!(/OLDVALUE/, @oldvalue))
-	end
+  page.should have_xpath(@path.gsub!(/OLDVALUE/, @oldvalue))
 end

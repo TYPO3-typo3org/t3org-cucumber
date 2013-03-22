@@ -13,16 +13,12 @@ When /^I fill in new user data$/ do
 end
 
 Then /^I should see the confirmation$/ do
-	wait_until(20) do
-		page.should have_xpath("//*[contains(@class,'tx-ajaxlogin-widget')]//div[contains(@class,'message-ok')]")
-	end
+  page.should have_xpath("//*[contains(@class,'tx-ajaxlogin-widget')]//div[contains(@class,'message-ok')]")
 end
 
 Then /^I should get an confirmation mail$/ do
-	wait_until(20) do
-		mails = mails_for(@username)
-		mails.count { |d| d[:title] == 'Registration at ' + current_domain } == 1
-	end
+  mails = mails_for(@username)
+  mails.count { |d| d[:title] == 'Registration at ' + current_domain } == 1
 end
 
 When /^I fill in invalid (.*) data$/ do |invalid_username|
@@ -54,7 +50,7 @@ When /^I fill in a "(.*?)" username$/ do |type|
 	end
 end
 
-Given /^that I am logged in$/ do
+Given /^(that |)I am logged in$/ do |x|
 	steps %Q{
 		When I open the login popup
 		And I fill in a "valid" username
