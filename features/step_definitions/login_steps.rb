@@ -1,3 +1,13 @@
+# See: http://www.elabs.se/blog/53-why-wait_until-was-removed-from-capybara
+def wait_until(timeout = Capybara.default_wait_time)
+  require "timeout"
+  Timeout.timeout(timeout) do
+    sleep(0.1) until value = yield
+    value
+  end
+end
+
+
 When /^(?:|I )open the login popup/ do
 	tag = page.find(:css, '#login-status a')
 	tag.trigger(:mouseover)
@@ -17,8 +27,11 @@ Then /^I should see the confirmation$/ do
 end
 
 Then /^I should get an confirmation mail$/ do
-  mails = mails_for(@username)
-  mails.count { |d| d[:title] == 'Registration at ' + current_domain } == 1
+  wait_until(60) {
+    mails = mails_for(@username)
+    print mails.inspect
+    mails.count { |d| d[:title] == 'Registration at ' + current_domain } == 1
+  }
 end
 
 When /^I fill in invalid (.*) data$/ do |invalid_username|

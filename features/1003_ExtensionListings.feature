@@ -17,7 +17,7 @@ Feature: The TER is searchable, sortable and provides extension details
   @skipped
   Scenario Outline: Open TER supports searches and has accurate results
     Given I am on ter
-    When I search <term>
+    When I search extensions for <term>
     Then I should see <amount> different extensions
     And <extension_key> appears as first extension
   Examples:

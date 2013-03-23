@@ -5,7 +5,6 @@ require 'capybara/dsl'
 require 'capybara/cucumber'
 require 'capybara/session'
 require 'capybara-screenshot'
-
 require 'capybara-webkit'
 
 Capybara.default_selector = :css

@@ -11,8 +11,8 @@ When /^I open the next page$/ do
 	find(:xpath, "//*[@class='tx-pagebrowse-pi1']/ul[contains(@class, 'b-pager')]/li[contains(@class, 'act')]/following::*[1]").click
 end
 
-When /^I search (.*)$/ do |term|
-	within(:xpath, "//div[contains(@class, 'ter-ext-list-search')]/form") do
+When /^I search extensions for (.*)$/ do |term|
+	within(:xpath, "//div[contains(@class, 'quick-search')]/form") do
 		fill_in("q", :with => term)
 		find_button('Search').click
 	end
