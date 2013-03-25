@@ -2,22 +2,22 @@ When /^I (open|close) the social area$/ do |state|
 	not_state = state == 'open' ? 'close' : 'open'
 	unless page.should have_xpath("//*[@class='b-social b-social-#{state}']")
 		page.should have_xpath("//*[@class='b-social b-social-#{not_state}']")
-		find(:xpath, "//*[@class='b-social-toggle']]").click
+		find("//*[@class='b-social-toggle']]").click
 	end
 	page.should have_xpath("//*[@class='b-social b-social-#{state}']")
 end
 
 When /^I click on the fourth stage item$/ do
-	find(:xpath, "//*[@id='top-slider']//ul[@class='slider-nav']/li[4]/div").click
+	find("//*[@id='top-slider']//ul[@class='slider-nav']/li[4]/div").click
 	page.should have_xpath("//*[@id='top-slider']//ul[@class='slider-nav']/li[4][@class='active']")
 end
 
 Then /^I should see user profiles$/ do
-	assert page.all(:xpath, "//*[@id='randomUserProfiles']/*/li/img").length >= 15
+	assert page.all("//*[@id='randomUserProfiles']/*/li/img").length >= 15
 end
 
 Then /^forge activity messages$/ do
-  assert page.all(:xpath, "//*[@id='forge-ticker']/*//li[@class='slide']").length >= 5
+  assert page.all("//*[@id='forge-ticker']/*//li[@class='slide']").length >= 5
 end
 
 Then /^I should see the first item going active$/ do
@@ -25,7 +25,7 @@ Then /^I should see the first item going active$/ do
 end
 
 Then /^I should see (\d+) active sponsor banners$/ do |amount|
-	@banners = page.all(:xpath, "//*[@id='randombanners']/div/div[not(contains(@style, 'display: none;'))]/a")
+	@banners = all("//*[@id='randombanners']/div/div[not(contains(@style, 'display: none;'))]/a")
 	assert @banners.length == amount.to_i
 	@path = "//*[@id='randombanners']/div[1]/div[not(contains(@style, 'display: none;'))]/a[@href != 'OLDVALUE']"
 	@oldvalue = @banners.first[:href]

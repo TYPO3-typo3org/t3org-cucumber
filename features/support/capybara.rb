@@ -7,7 +7,7 @@ require 'capybara/session'
 require 'capybara-screenshot'
 require 'capybara-webkit'
 
-Capybara.default_selector = :css
+Capybara.default_selector = :xpath
 Capybara.javascript_driver = :webkit
 Capybara.default_driver = :webkit
 Capybara.save_and_open_page_path = 'tmp/capybara'
