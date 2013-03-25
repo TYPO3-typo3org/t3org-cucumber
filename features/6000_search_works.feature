@@ -11,7 +11,3 @@ Feature: Regular search include various content categories as facet
     And I search "solr" within "News"
     Then I should see at least 10 search results
     And I should see 3 sidebar facets
-
-
-
-

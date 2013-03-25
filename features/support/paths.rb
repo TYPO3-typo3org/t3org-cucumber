@@ -19,8 +19,6 @@ module NavigationHelpers
         "http://#{domain}/my-account/"
       when /sign-up/
         "http://#{domain}/my-account/sign-up/"
-      when /some-news-detail-page/
-        "http://#{domain}/news/article/impressions-of-the-developer-days-2012/"
       when /edit-personal-data/
         "http://#{domain}/my-account/edit-personal-data/"
       when /professional-service-listing/
