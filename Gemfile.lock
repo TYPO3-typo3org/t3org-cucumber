@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     builder (3.2.0)
     capybara (2.0.2)
@@ -35,12 +35,16 @@ GEM
     guard-shell (0.5.1)
       guard (>= 1.1.0)
     headless (1.0.1)
+    httparty (0.10.2)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     json (1.7.7)
     listen (0.7.3)
     lumberjack (1.0.3)
     method_source (0.8.1)
     mime-types (1.21)
-    multi_json (1.7.1)
+    multi_json (1.7.2)
+    multi_xml (0.5.3)
     nokogiri (1.5.9)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -49,6 +53,7 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
+    rake (10.0.3)
     rb-inotify (0.9.0)
       ffi (>= 0.5.0)
     rb-readline (0.4.2)
@@ -84,6 +89,9 @@ DEPENDENCIES
   guard
   guard-shell
   headless
+  httparty
+  rake
   rb-inotify
   rb-readline
   rspec
+  rspec-expectations

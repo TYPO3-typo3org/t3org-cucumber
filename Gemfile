@@ -1,6 +1,7 @@
-source :rubygems
+source "https://rubygems.org"
 gem 'cucumber'
 gem 'rspec'
+gem 'rspec-expectations'
 gem 'capybara'
 gem 'capybara-webkit'
 gem 'capybara-screenshot'
@@ -9,3 +10,5 @@ gem 'guard'
 gem 'guard-shell'
 gem 'rb-inotify'
 gem 'rb-readline'
+gem 'httparty'
+gem 'rake'
