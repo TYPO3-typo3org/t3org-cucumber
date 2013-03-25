@@ -1,25 +1,13 @@
-require('net/http')
-require('rexml/document')
-require('rexml/xpath')
-include REXML
-
 module MailHelpers
-
-	def mail_address_for(username)
-		"#{username}@mmmmail.com"
+	def mail_user
+		ENV['mail_user'] || 't3o.latest'
+	end
+	def mail_password
+		ENV['mail_password'] || ''
 	end
 
-	def mails_for(username)
-		xml = Net::HTTP.get(URI.parse("http://www.mmmmail.com/#{username}.xml"))
-		doc = Document.new(xml)
-		mails = []
-		REXML::XPath.each(doc, '//channel/item') do |el|
-			mails.push({
-						   :title => REXML::XPath.first(el, './title').get_text,
-						   :description => REXML::XPath.first(el, './description').get_text
-					   })
-		end
-		mails
+	def mail_address_for(username)
+		"#{mail_user}+#{username}@gmail.com"
 	end
 end
 
