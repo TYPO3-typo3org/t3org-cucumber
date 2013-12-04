@@ -1,5 +1,6 @@
 Feature: Create a new account for TYPO3 org
 
+  @mail
   Scenario:
     Given I clear my inbox
 
@@ -12,6 +13,7 @@ Feature: Create a new account for TYPO3 org
     And I press "Sign up!"
     Then I should see the confirmation
 
+  @mail
   Scenario: Check my inbox to find the confirmation mail
     Given I login to gmail
     And I open the message with subject "Registration at ##domain##"
