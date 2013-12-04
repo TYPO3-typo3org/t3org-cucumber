@@ -17,8 +17,8 @@ After('@long') do
   Capybara.default_wait_time = 2
 end
 
-Before ('@skipped') do |scenario|
-  scenario.instance_variable_get("@skipped").each do |step|
-    step.skip_invoke!
-  end
-end
+# Before ('@skipped') do |scenario|
+#   scenario.instance_variable_get("@skipped").each do |step|
+#     step.skip_invoke!
+#   end
+# end
