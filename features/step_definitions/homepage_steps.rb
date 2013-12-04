@@ -25,7 +25,12 @@ Then /^I should see the first item going active$/ do
 end
 
 Then /^I should see (\d+) active sponsor banners$/ do |amount|
-	@banners = all("//*[@id='randombanners']/div/div[not(contains(@style, 'display: none;'))]/a")
+	selector = "//*[@id='randombanners']/div/div[not(contains(@style, 'display: none;'))]/a"
+	@banners = all(selector)
+	# cucumber sometimes evaluates the selector even when only half the randombanners are visible.
+	sleep(0.1)
+	@banners = all(selector)
+
 	assert @banners.length == amount.to_i
 	@path = "//*[@id='randombanners']/div[1]/div[not(contains(@style, 'display: none;'))]/a[@href != 'OLDVALUE']"
 	@oldvalue = @banners.first[:href]
