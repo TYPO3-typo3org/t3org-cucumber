@@ -43,3 +43,10 @@ When /^the sponsor banners should be different$/ do
 		banner_urls.push(banner[:href])
 	end
 end
+
+Then /^the links should (not )?be followed by search engines$/ do |should_follow|
+	should_follow = should_follow == ''
+	@banners.each do |banner|
+		assert banner[:rel] == should_follow ? nil : "nofollow"
+	end
+end
