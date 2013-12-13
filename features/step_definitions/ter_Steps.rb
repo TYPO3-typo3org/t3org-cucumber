@@ -32,3 +32,8 @@ Then /^(.*) appears as first extension$/ do |extension_key|
 	element = find("//*[@class='tx-solr']/div[contains(@class, 'ter-ext-list-row')][1]/*//span[contains(@class, 'ter-ext-list-row-key')]")
 	assert element.text == extension_key, "Found #{element.text} - expected #{extension_key}"
 end
+
+Then /^(.*) appears as extension$/ do |extension_key|
+	expression = "//*[@class='tx-solr']/div[contains(@class, 'ter-ext-list-row')]/*//span[contains(@class, 'ter-ext-list-row-key')][contains(text(), '#{extension_key}')]"
+	page.should have_xpath(expression)
+end
