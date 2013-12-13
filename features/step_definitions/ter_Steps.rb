@@ -12,10 +12,11 @@ When /^I open the next page$/ do
 end
 
 When /^I search extensions for (.*)$/ do |term|
-	within("//div[contains(@class, 'quick-search')]/form") do
+	within("//form[contains(@id, 'tx-solr-search-form-pi-results')]") do
 		fill_in("q", :with => term)
 		find_button('Search').click
 	end
+
 end
 
 When /^I switch sorting to Downloads$/ do
