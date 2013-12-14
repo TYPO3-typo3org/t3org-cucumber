@@ -69,3 +69,10 @@ When(/^I click to transfer the extension key to "([^"]*)"$/) do |name|
     click_button "Transfer"
   end
 end
+
+When(/^I click to delete the extension key$/) do
+  raise "calling from wrong context" if @extension_key.nil?
+  within("//table[contains(@class, 'manage-keys')]/tbody/tr[contains(., '#{@extension_key}')]") do
+    click_link "Delete"
+  end
+end
