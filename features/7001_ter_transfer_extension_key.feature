@@ -2,12 +2,12 @@ Feature: Transfering an extension key
 
   Background:
     Given I am in alice's browser
-    And I login as "alice"
     And I go to extension-key-registration
+    And I login as "alice"
 
     Given I am in bob's browser
-    And I login as "bob"
     And I go to extension-key-registration
+    And I login as "bob"
 
   @long
   Scenario: Extension key can be transfered by user
