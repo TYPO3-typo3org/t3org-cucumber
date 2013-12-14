@@ -6,7 +6,7 @@ Feature: Upload of an extension is possible
     And I register a valid extension key
 
   @long
-  Scenario:
+  Scenario: uploading an extension is possible
     Given I click the upload button for that extension
     And I enter an upload description
     And I select a file to upload
@@ -14,7 +14,7 @@ Feature: Upload of an extension is possible
     Then I should see a success message
 
   @long
-  Scenario Outline:
+  Scenario Outline: When upload fails a helpful message is shown
     Given I click the upload button for that extension
     And I enter an upload description
     And I select a file <type> to upload
