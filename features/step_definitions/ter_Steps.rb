@@ -76,3 +76,24 @@ When(/^I click to delete the extension key$/) do
     click_link "Delete"
   end
 end
+
+Given(/^I click the upload button for that extension$/) do
+  raise "calling from wrong context" if @extension_key.nil?
+  within("//table[contains(@class, 'manage-keys')]/tbody/tr[contains(., '#{@extension_key}')]") do
+    click_link "Upload"
+  end
+end
+
+When(/^I enter an upload description$/) do
+  fill_in("tx_terfe2_pi1[form][comment]", :with => "Test upload of #{@extension_key} on #{Time.now.to_s}.")
+end
+
+When(/^I select a file (.*? ?)to upload$/) do |type|
+  source_file_name = TerFileHelper.get_file(type)
+  source_path = File.expand_path(File.dirname(__FILE__) + '/../../files/') + '/' + source_file_name
+  target_file_name = @extension_key + '_0.0.1.zip'
+  target_path = File.expand_path(File.dirname(__FILE__) + '/../../tmp/') + '/' + target_file_name
+  FileUtils.copy(source_path, target_path)
+
+  attach_file('tx_terfe2_pi1[form][file]', target_path)
+end

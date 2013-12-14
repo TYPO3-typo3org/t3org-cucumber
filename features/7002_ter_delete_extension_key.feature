@@ -1,8 +1,7 @@
 Feature: Deleting an extension key
 
   Background:
-    Given I am in alice's browser
-    And I go to extension-key-registration
+    Given I go to extension-key-registration
     And I login as "alice"
 
   Scenario: Extension key can be deleted
