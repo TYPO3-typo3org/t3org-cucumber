@@ -1,4 +1,4 @@
-Feature:
+Feature: Test features of the admin tab
 
   Scenario: Admins see an admin tab in TER section
     Given I go to extension-key-registration
