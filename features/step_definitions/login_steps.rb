@@ -45,18 +45,31 @@ end
 
 When /^(?:|I )fill in a "(.*?)" username$/ do |type|
 	if type == 'valid'
-		fill_in("user", :with => "typo3Plonk")
-		fill_in("pass", :with => "plonk1234")
+		fill_in("user", :with => UserHelpers.get_username('alice'))
+		fill_in("pass", :with => UserHelpers.get_password('alice'))
 	else
 		fill_in("user", :with => "nothingHere")
 		fill_in("pass", :with => "totoalUnusedPassword")
 	end
 end
 
+When /^(?:|I )fill in credentials for "(.*?)"/ do |name|
+  fill_in("user", :with => UserHelpers.get_username(name))
+  fill_in("pass", :with => UserHelpers.get_password(name))
+end
+
 When /^(?:|I )login with a "(.*?)" username/ do |type|
 	steps %Q{
 		When I open the login popup
 		And I fill in a "valid" username
+		And I press "Login"
+  }
+end
+
+When /^(?:|I )login as "(.*?)"/ do |name|
+  steps %Q{
+		When I open the login popup
+		And I fill in credentials for "#{name}"
 		And I press "Login"
   }
 end
@@ -108,4 +121,3 @@ Given /^(?:|I )clear my inbox$/ do
 		page.should have_xpath("//*[contains(text(), 'moved to the Trash.')]")
 	end
 end
-
