@@ -23,6 +23,8 @@ module NavigationHelpers
         "http://#{domain}/my-account/edit-personal-data/"
       when /professional-service-listing/
         "http://#{domain}/support/professional-services/"
+      when /extension-key-registration/
+        "http://#{domain}/extensions/extension-keys/"
       else
         raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
                   "Now, go and add a mapping in #{__FILE__}"

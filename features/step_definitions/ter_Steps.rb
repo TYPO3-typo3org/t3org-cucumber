@@ -38,3 +38,19 @@ Then /^(.*) appears as extension$/ do |extension_key|
 	expression = "//*[@class='tx-solr']/div[contains(@class, 'ter-ext-list-row')]/*//span[contains(@class, 'ter-ext-list-row-key')][contains(text(), '#{extension_key}')]"
 	page.should have_xpath(expression)
 end
+
+When(/^I register a valid extension key$/) do
+  @extension_key = 'test_cucumber_' + Time.now.to_i.to_s
+  fill_in('tx_terfe2_pi1[extensionKey]', :with => @extension_key)
+  click_button('Save')
+end
+
+When(/^I register (.*?) as extension key$/) do |ext_key|
+  @extension_key = ext_key
+  fill_in('tx_terfe2_pi1[extensionKey]', :with => @extension_key)
+  click_button('Save')
+end
+
+Then(/^I should see it in my extension key list$/) do
+  page.should have_xpath("//table[contains(@class, 'manage-keys')]/tbody/tr[contains(., '#{@extension_key}')]")
+end
