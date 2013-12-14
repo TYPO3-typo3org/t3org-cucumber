@@ -5,6 +5,7 @@ Feature: Upload of an extension is possible
     And I login with a "valid" username
     And I register a valid extension key
 
+  @long
   Scenario:
     Given I click the upload button for that extension
     And I enter an upload description
@@ -12,6 +13,7 @@ Feature: Upload of an extension is possible
     When I press "Upload extension"
     Then I should see a success message
 
+  @long
   Scenario Outline:
     Given I click the upload button for that extension
     And I enter an upload description

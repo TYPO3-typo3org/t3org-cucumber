@@ -9,6 +9,7 @@ Feature: Transfering an extension key
     And I login as "bob"
     And I go to extension-key-registration
 
+  @long
   Scenario: Extension key can be transfered by user
     Given I am in alice's browser
     And I register a valid extension key

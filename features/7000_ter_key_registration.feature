@@ -4,11 +4,13 @@ Feature: Registering an extension key on the webpage is possible
     Given I go to extension-key-registration
     And I login with a "valid" username
 
+  @long
   Scenario: When I register a new extension key it shows up in my list
     Given I register a valid extension key
     Then I should see a success message
     And I should see the extension key in my list
 
+  @long
   Scenario Outline: Registration of invalid extension keys is not possible
     Given I register <extension_key> as extension key
     Then I should see an error message saying "Extension key is invalid"
