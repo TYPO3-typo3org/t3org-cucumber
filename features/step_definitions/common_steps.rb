@@ -14,6 +14,10 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
 	click_link(link)
 end
 
+When /^(?:|I )follow the first "([^"]*)"$/ do |link|
+  first(:link, link).click
+end
+
 Then /^I should see them changing$/ do
   page.should have_xpath(@path.gsub!(/OLDVALUE/, @oldvalue))
 end
@@ -28,5 +32,5 @@ Then(/^I should see an error message saying "([^"]*)"$/) do |msg|
 end
 
 Then(/^I should see a success message/) do
-  page.should have_xpath("//div[contains(@class, 'message-ok')]")
+  page.should have_xpath("//div[contains(@class, 'message-ok')] | //div[contains(@class, 'congratulations')]")
 end

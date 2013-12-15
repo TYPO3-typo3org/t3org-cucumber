@@ -25,6 +25,12 @@ module NavigationHelpers
         "http://#{domain}/support/professional-services/"
       when /extension-key-registration/
         "http://#{domain}/extensions/extension-keys/"
+      when /event-submission/
+        "http://#{domain}/events/add-new-event/"
+      when /code-sprints/
+        "http://#{domain}/events/code-sprints/"
+      when /community-events/
+        "http://#{domain}/events/community-events/"
       else
         raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
                   "Now, go and add a mapping in #{__FILE__}"
