@@ -22,3 +22,22 @@ end
 #     step.skip_invoke!
 #   end
 # end
+
+# print Console output and JavaScript error messages
+After do |scenario|
+  messages = page.driver.console_messages
+  unless messages.empty?
+    warn "Console log:"
+    messages.each do |msg|
+      warn "  - #{msg[:message].strip}"
+    end
+  end
+
+  messages = page.driver.error_messages
+  unless messages.empty?
+    warn "JavaScript errors occured:"
+    messages.each do |msg|
+      warn "  - #{msg[:message].strip} on #{msg[:source]}:#{msg[:line_number]}"
+    end
+  end
+end
