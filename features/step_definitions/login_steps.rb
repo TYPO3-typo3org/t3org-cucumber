@@ -85,11 +85,33 @@ Then /^(?:|I )should see "(.*?)"$/ do |text|
 	page.should have_xpath("//*/text()[ . = '#{text}']")
 end
 
+Then /^(?:|I )should not see "(.*?)"$/ do |text|
+  page.should_not have_xpath("//*/text()[ . = '#{text}']")
+end
+
+Then /^I should see that I am logged in$/ do
+  steps %Q{
+    Then I should see "My account"
+    When I open the login popup
+    Then I should see "You are logged in as:"
+  }
+end
+
+Then /^I should see that I am not logged in$/ do
+  steps %Q{
+    Then I should not see "My account"
+    When I open the login popup
+    Then I should not see "You are logged in as:"
+  }
+end
+
 Then /^(?:|I )logout$/ do
 	click_on('Logout')
 end
 
 Given /^the session is cleared$/ do
+  # WARNING: This will NOT clear sessionStorage or localStorage!
+  # @see https://github.com/jnicklas/capybara/issues/1001
 	Capybara.reset_sessions!
 	Capybara.use_default_driver
 end
