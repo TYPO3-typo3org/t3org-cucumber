@@ -47,6 +47,15 @@ Then /^(?:|I )should see an error message$/ do
 
 end
 
+Then /^(?:|I )should see a name error message$/ do
+	begin
+		@test_string = 'Your name must not be empty and consist of atleast 2 words.'
+		page.should have_xpath("//*/text()[contains(., '#{@test_string}')]")
+	rescue Exception => e
+		puts e
+	end
+end
+
 When /^(?:|I )fill in a "(.*?)" username$/ do |type|
 	if type == 'valid'
 		fill_in("user", :with => UserHelpers.get_username('alice'))
