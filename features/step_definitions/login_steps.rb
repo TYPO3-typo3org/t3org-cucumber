@@ -38,22 +38,13 @@ When /^(?:|I )fill in (.*) as the users name$/ do |name|
 end
 
 Then /^(?:|I )should see an error message$/ do
-	begin
-		@test_string = 'Username must be at least 3 characters and can contain 0-9 a-z - _ only.'
-		page.should have_xpath("//*/text()[contains(., '#{@test_string}')]")
-	rescue Exception => e
-		puts e
-	end
-
+	@test_string = 'Username must be at least 3 characters and can contain 0-9 a-z - _ only.'
+	page.should have_xpath("//*/text()[contains(., '#{@test_string}')]")
 end
 
 Then /^(?:|I )should see a name error message$/ do
-	begin
-		@test_string = 'Your name must not be empty and consist of atleast 2 words.'
-		page.should have_xpath("//*/text()[contains(., '#{@test_string}')]")
-	rescue Exception => e
-		puts e
-	end
+	@test_string = 'Your name must not be empty and consist of atleast 2 words.'
+	page.should have_xpath("//*/text()[contains(., '#{@test_string}')]")
 end
 
 When /^(?:|I )fill in a "(.*?)" username$/ do |type|
