@@ -14,6 +14,7 @@ Feature: Create no new account for TYPO3 org cause of invalid user data
     | !                |
     | 23               |
     | %$!              |
+    | _username        |
 
   @long
   Scenario Outline: Visit typo3.org and and test invalid names
