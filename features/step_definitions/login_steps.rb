@@ -33,6 +33,10 @@ When /^(?:|I )fill in invalid (.*) data$/ do |invalid_username|
 	fill_in("Repeat", :with => @username + "!#")
 end
 
+When /^(?:|I )fill in (.*) as the users name$/ do |name|
+	fill_in("Name", :with => name)
+end
+
 Then /^(?:|I )should see an error message$/ do
 	begin
 		@test_string = 'Username must be at least 3 characters and can contain 0-9 a-z - _ only.'
