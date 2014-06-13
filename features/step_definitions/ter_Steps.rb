@@ -64,10 +64,11 @@ end
 
 When(/^I click to transfer the extension key to "([^"]*)"$/) do |name|
   raise "calling from wrong context" if @extension_key.nil?
-  within("//table[contains(@class, 'manage-keys')]/tbody/tr[contains(., '#{@extension_key}')]") do
-    fill_in("tx_terfe2_pi1[newUser]", :with => UserHelpers.get_username(name))
-    click_button "Transfer"
-  end
+
+  find(:xpath, '//a[contains(@href, "tx_terfe2_tab_transferkey")]').click
+  select @extension_key, :from => "tx_terfe2_pi1[extension]"
+  fill_in("tx_terfe2_pi1[newUser]", :with => UserHelpers.get_username(name))
+  click_button 'Transfer extension key'
 end
 
 When(/^I click to delete the extension key$/) do
