@@ -7,5 +7,5 @@ end
 Then(/^I should see my event$/) do
   raise '@calendar_title is not defined' if @calendar_title.nil?
 
-  page.should have_xpath("//tr/td/h5[contains(.,'#{@calendar_title}')]")
+  page.should have_xpath("//tr/td/h5/a[contains(.,'#{@calendar_title}')]")
 end
