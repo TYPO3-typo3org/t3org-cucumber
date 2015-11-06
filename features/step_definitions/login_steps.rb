@@ -38,7 +38,7 @@ When /^(?:|I )fill in (.*) as the users name$/ do |name|
 end
 
 Then /^(?:|I )should see an error message$/ do
-	@test_string = 'Username must be at least 3 characters and can contain 0-9 a-z - _ only.'
+	@test_string = 'Username must be at least 3 and maximum 20 characters and can contain 0-9 a-z - _ only.'
 	page.should have_xpath("//*/text()[contains(., '#{@test_string}')]")
 end
 
