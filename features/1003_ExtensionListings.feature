@@ -20,6 +20,6 @@ Feature: The TER is searchable, sortable and provides extension details
     And <extension_key> appears as first extension
   Examples:
     | term        | amount | extension_key |
-    | templavoila | 20     | templavoila   |
-    | news        | 20     | news          |
-    | realurl     | 20     | realurl       |
+    | templavoila | 10     | templavoila   |
+    | news        | 50     | news          |
+    | realurl     | 10     | realurl       |
